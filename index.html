@@ -1,1 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
+    <meta name="color-scheme" content="dark">
+    <meta name="description" content="Where The Mix Never Sleeps!! Listen live on Prodigal Sun Radio.">
+    <link rel="canonical" href="https://mkuu-amani.github.io/Promo3/">
+    <title>Prodigal Sun Radio — Where The Mix Never Sleeps!!</title>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Prodigal Sun Radio">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:url" content="https://mkuu-amani.github.io/Promo3/">
+    <meta property="og:title" content="Prodigal Sun Radio">
+    <meta property="og:description" content="Where The Mix Never Sleeps!!">
+    <meta property="og:image" content="https://mkuu-amani.github.io/Promo3/og-card.jpg">
+    <meta property="og:image:secure_url" content="https://mkuu-amani.github.io/Promo3/og-card.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Prodigal Sun Radio — Where The Mix Never Sleeps!!">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://mkuu-amani.github.io/Promo3/">
+    <meta name="twitter:title" content="Prodigal Sun Radio">
+    <meta name="twitter:description" content="Where The Mix Never Sleeps!!">
+    <meta name="twitter:image" content="https://mkuu-amani.github.io/Promo3/og-card.jpg">
+    <meta name="twitter:image:alt" content="Prodigal Sun Radio — Where The Mix Never Sleeps!!">
+    <style>
+        * { box-sizing: border-box; }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+        }
+        body {
+            overflow: hidden;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        .promo-link {
+            position: fixed;
+            inset: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            height: 100dvh;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            background: #000;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        .stage {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        .promo-video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center center;
+            background: #000;
+            pointer-events: none;
+            filter: contrast(1.16) saturate(1.14) brightness(1.05);
+        }
+        .sun-glow {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 50% 38%, rgba(255, 196, 70, 0.28) 0%, rgba(255, 140, 0, 0.08) 28%, transparent 55%);
+            mix-blend-mode: screen;
+            animation: pulse 6s ease-in-out infinite;
+        }
+        .heat {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(180deg, rgba(255, 170, 40, 0.08), transparent 35%, rgba(0, 0, 0, 0.18));
+            mix-blend-mode: soft-light;
+            animation: shimmer 9s ease-in-out infinite;
+        }
+        .embers {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .ember {
+            position: absolute;
+            bottom: -8px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #ffd36a;
+            box-shadow: 0 0 8px 3px rgba(255, 180, 40, 0.65);
+            opacity: 0;
+            animation: rise linear infinite;
+        }
+        .visit-hint {
+            position: fixed;
+            left: 50%;
+            bottom: max(1.25rem, env(safe-area-inset-bottom));
+            transform: translateX(-50%);
+            z-index: 2;
+            max-width: calc(100% - 2rem);
+            padding: 0.55rem 1rem;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.65);
+            color: #f5d76e;
+            font-size: 0.85rem;
+            letter-spacing: 0.03em;
+            text-align: center;
+            pointer-events: none;
+            backdrop-filter: blur(6px);
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.55; }
+            50%      { opacity: 1; }
+        }
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.45; }
+            50%      { opacity: 0.85; }
+        }
+        @keyframes rise {
+            0%   { transform: translate3d(0, 0, 0) scale(0.6); opacity: 0; }
+            12%  { opacity: 0.9; }
+            100% { transform: translate3d(var(--drift), -110vh, 0) scale(0.2); opacity: 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .sun-glow, .heat, .ember {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a
+        class="promo-link"
+        href="https://www.prodigalsunradio.com/"
+        rel="noopener noreferrer"
+        aria-label="Visit Prodigal Sun Radio"
+    >
+        <div class="stage">
+            <video
+                class="promo-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                webkit-playsinline
+                preload="metadata"
+                poster="promo.jpg"
+            >
+                <source src="background.mp4" type="video/mp4">
+            </video>
+            <div class="sun-glow"></div>
+            <div class="heat"></div>
+            <div class="embers" id="embers"></div>
+        </div>
+    </a>
+    <div class="visit-hint">Tap to listen live</div>
+    <script>
+        const DEST = 'https://www.prodigalsunradio.com/';
+        const link = document.querySelector('.promo-link');
+        const video = document.querySelector('.promo-video');
+        const layer = document.getElementById('embers');
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.location.assign(DEST);
+        });
+
+        if (video) {
+            video.muted = true;
+            const play = video.play();
+            if (play && typeof play.catch === 'function') play.catch(function () {});
+            if (reduceMotion) video.pause();
+        }
+
+        const count = /iPhone|iPad|Android/i.test(navigator.userAgent) ? 12 : 22;
+        if (!reduceMotion) {
+            for (let i = 0; i < count; i += 1) {
+                const spark = document.createElement('span');
+                spark.className = 'ember';
+                spark.style.left = Math.random() * 100 + '%';
+                spark.style.setProperty('--drift', (Math.random() * 80 - 40) + 'px');
+                spark.style.animationDuration = (7 + Math.random() * 8) + 's';
+                spark.style.animationDelay = (-Math.random() * 12) + 's';
+                spark.style.width = spark.style.height = (2 + Math.random() * 5) + 'px';
+                layer.appendChild(spark);
+            }
+        }
+    </script>
+</body>
+</html>
